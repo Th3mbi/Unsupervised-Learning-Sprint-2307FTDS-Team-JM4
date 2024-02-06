@@ -45,7 +45,7 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Recommender System","Solution Overview"]
+    page_options = ["Recommender System", "Information", "About Us", "Solution Overview"]
 
     # -------------------------------------------------------------------
     # ----------- !! THIS CODE MUST NOT BE ALTERED !! -------------------
@@ -96,10 +96,63 @@ def main():
                     st.error("Oops! Looks like this algorithm does't work.\
                               We'll need to fix it!")
 
+            
+
 
     # -------------------------------------------------------------------
 
     # ------------- SAFE FOR ALTERING/EXTENSION -------------------
+    # Building out the "Information" page
+    if page_selection == "Information":
+        st.markdown("<h1 style='color: black; font-weight: bold;'>Movie Recommender</h1>", unsafe_allow_html=True)
+        st.markdown("<h2 style='color: black; font-weight: bold;'>Movie Recommendation Predict</h2>", unsafe_allow_html=True)
+        st.info("Introduction")
+        # You can read a markdown file from supporting resources folder
+        # st.markdown("Some information here")
+        st.markdown("<p style='color: black; font-size: 1.0em; font-weight: bold;'>" +"A movie recommender is a software designed to help users discover films aligning with their preferences. By employing various algorithms and data analysis, it analyzes user behavior and historical preferences to generate personalized suggestions, aiming to enhance the user experience. These systems, utilizing content-based filtering, collaborative filtering, or hybrid methods, provide accurate and relevant movie recommendations based on users' past interactions. The introduction to a recommendation algorithm underscores the challenge users face in navigating vast content. It emphasizes the need for personalized recommendations and outlines the dual strategies—content-based and collaborative filtering."+"</p>", unsafe_allow_html=True)
+
+
+        image = Image.open("resources/imgs/Information.png")
+        st.image(image, use_column_width=True)
+        st.markdown("<p style='color: black; font-size: 1.0em; font-weight: bold;'>" +" The algorithm's goal is to forecast a user's movie rating accurately, leveraging insights from historical preferences, paving the way for a recommendation system that seamlessly integrates both methods for precise and personalized predictions. "+"</p>", unsafe_allow_html=True)
+        st.info("Purpose")
+        st.markdown("<p style='color: black; font-size: 1.0em; font-weight: bold;'>" +" It highlights that recommender systems are software designed to aid users in discovering films that match their preferences."+"</p>", unsafe_allow_html=True)
+        
+    # Building About us page
+    if page_selection == "About Us":
+        st.markdown("<h1 style='color: black; font-weight: bold;'>Entertainment AI</h1>", unsafe_allow_html=True)
+        #st.markdown("<h2 style='color: black; font-weight: bold;'>Movie Recommender Prediction</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: red;'>Who we are</h1>", unsafe_allow_html=True)
+
+        st.markdown("<p style='color: black; font-size: 1.2em; font-weight: bold;'>" +
+            "We are Entertainment AI, a leading global technology company specializing in cloud infrastructure, software, and hardware solutions. We empower businesses to make smarter decisions and foster growth through insightful data analysis." +
+            "</p>", unsafe_allow_html=True)
+        col1, col2 = st.columns([1,1])
+        col1.markdown("**<h3 style='color:black'>Vision</h3>**", unsafe_allow_html=True)
+        col2.markdown("**<h3 style='color:black'>Mission</h3>**", unsafe_allow_html=True)
+        col1.markdown("<p style='color: black; font-size: 1.0em; font-weight: bold;'>" +"Empowering personalized entertainment experiences, Entertainment AI envisions pioneering a recommendation algorithm that seamlessly combines content and collaborative filtering. Our goal is to accurately predict user movie ratings based on historical preferences, redefining the landscape of user-centric content discovery."+"</p>", unsafe_allow_html=True)
+        col2.markdown("<p style='color: black; font-size: 1.0em; font-weight: bold;'>" +"Our mission at Entertainment AI is to engineer a cutting-edge recommendation algorithm, blending content and collaborative filtering to elevate user satisfaction by delivering precise and personalized movie recommendations. We aim to revolutionize the entertainment industry through innovative solutions that anticipate and exceed user expectations."+"</p>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: red;'>The team</h1>", unsafe_allow_html=True)
+        col1, col2, col3 = st.columns([1.75, 1.5, 1.75])
+        col1.markdown("**<h3 style='color:black'>Name</h3>**", unsafe_allow_html=True)
+        col1.info("Sharonrose Khokhololo")
+        col2.markdown("**<h3 style='color:black'>Role</h3>**", unsafe_allow_html=True)
+        col2.info("Team Lead")
+        col3.markdown("**<h3 style='color:black'>Email</h3>**", unsafe_allow_html=True)
+        col3.info("morongwarose92@gmail.com")
+        col1.info("Nino Palesa Tsolo")
+        col2.info("Data Scientist")
+        col3.info("tsolonino@gmail.com")
+        col1.info("Daluxolo Hadebe")
+        col2.info("Technical Lead")
+        col3.info("sanelehadebe070@gmail.com")
+        col1.info("Thembi Chauke")
+        col2.info("Project Manager")
+        col3.info("thembichauke@gmail.com")
+        st.markdown("<h2 style='text-align: center; color: red;'>Clients</h1>", unsafe_allow_html=True)
+        image = Image.open("resources/imgs/clients.jpeg")
+        st.image(image,use_column_width=True)
+
     if page_selection == "Solution Overview":
         st.title("Solution Overview")
         st.write("Describe your winning approach on this page")
