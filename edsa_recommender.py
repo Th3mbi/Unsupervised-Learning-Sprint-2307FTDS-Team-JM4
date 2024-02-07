@@ -41,6 +41,7 @@ from recommenders.Trail import content_generate_top_N_recommendations
 # Data Loading
 title_list = load_movie_titles('resources/data/usableData.csv')
 
+
 # App declaration
 def main():
 
@@ -48,12 +49,13 @@ def main():
     # you are welcome to add more options to enrich your app.
     page_options = ["Recommender System", "Information", "About Us", "Solution Overview"]
 
+
     # -------------------------------------------------------------------
     # ----------- !! THIS CODE MUST NOT BE ALTERED !! -------------------
     # -------------------------------------------------------------------
     page_selection = st.sidebar.selectbox("Choose Option", page_options)
     if page_selection == "Recommender System":
-        
+    
         # Header contents
         st.write('# Movie Recommender Engine')
         st.write('### EXPLORE Data Science Academy Unsupervised Predict')
