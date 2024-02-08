@@ -170,7 +170,7 @@ def main():
         st.title("Solution Overview")
         st.markdown("<h1 style='text-align: center; color: black;'>Collaborative filtering</h1>", unsafe_allow_html=True)
         st.markdown("<p style='color: black; font-size: 1.2em; font-weight: bold;'>" +
-                    "Collaborative filtering is a method used in recommendation systems to predict the preferences or interests of a user by collecting and analyzing information from many users. It relies on the assumption that users who have agreed in the past tend to agree again in the future." +
+                    "The movie recommender system worked best with a collaborative filtering approach, specifically utilizing the Singular Value Decomposition (SVD) model. This method effectively reduces the dimensionality of the data, allowing it to discern meaningful patterns and recommendations amidst noise. Unlike other techniques, SVD is adept at mitigating the impact of noise, thereby enhancing recommendation accuracy. The system achieved a commendable Root Mean Squared Error (RMSE) value of 0.82, indicating its robust performance in predicting user preferences." +
             "</p>", unsafe_allow_html=True)
  
     
