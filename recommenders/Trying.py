@@ -31,8 +31,9 @@
 import numpy as np
 import pandas as pd
 import scipy as sp # <-- The sister of Numpy, used in our code for numerical efficientcy. 
-import matplotlib.pyplot as plt
-import seaborn as sns
+#import matplotlib.pyplot as plt
+#import seaborn as sns
+import surprise
 
 # Entity featurization and similarity computation
 from sklearn.metrics.pairwise import cosine_similarity 

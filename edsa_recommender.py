@@ -31,6 +31,7 @@ import streamlit as st
 # Data handling dependencies
 import pandas as pd
 import numpy as np
+import surprise 
 
 # Custom Libraries
 from utils.data_loader import load_movie_titles
@@ -38,6 +39,7 @@ from recommenders.collaborative_based import collab_model
 from recommenders.content_based import content_model
 from recommenders.Trail import content_generate_top_N_recommendations
 from recommenders.Trying import collab_generate_top_N_recommendations
+
 
 # Data Loading
 title_list = load_movie_titles('resources/data/usableData.csv')
