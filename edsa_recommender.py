@@ -82,9 +82,13 @@ def main():
                 try:
                     with st.spinner('Crunching the numbers...'):
                         top_recommendations = content_generate_top_N_recommendations(movie_Id=movie_Id, N=10)
-                        
+                        #index = usableData[usableData['movieId'].isin(top_recommendations['movieId'])].index
+                        #movie_titles = usableData.loc[index[0], 'titles']
                     st.title("We think you'll like:")
                     top_recommendations
+
+
+                
                     #for i,j in enumerate(top_recommendations):
                        # st.subheader(str(i+1)+'. '+j)
                 except:
