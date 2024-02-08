@@ -37,6 +37,7 @@ from utils.data_loader import load_movie_titles
 from recommenders.collaborative_based import collab_model
 from recommenders.content_based import content_model
 from recommenders.Trail import content_generate_top_N_recommendations
+from recommenders.Trying import collab_generate_top_N_recommendations
 
 # Data Loading
 title_list = load_movie_titles('resources/data/usableData.csv')
@@ -66,18 +67,18 @@ def main():
                         'Collaborative Based Filtering'))
 
         # User-based preferences
-        st.write('### Enter Your Three Favorite Movies')
-        movie_1 = st.selectbox('Fisrt Option',title_list[1:2000])
-        movie_2 = st.selectbox('Second Option',title_list[2001:4000])
-        movie_3 = st.selectbox('Third Option',title_list[4001:8100])
-        fav_movies = [movie_1,movie_2,movie_3]
-        fav_movies = movie_1
-        usableData = pd.read_csv("resources/data/usableData.csv")
-        index = usableData[usableData['title'] == fav_movies].index[0]
-        movie_Id = usableData.loc[index,'movieId']
         
         # Perform top-10 movie recommendation generation
         if sys == 'Content Based Filtering':
+            st.write('### Enter Your Three Favorite Movies')
+            movie_1 = st.selectbox('Fisrt Option',title_list[1:2000])
+            movie_2 = st.selectbox('Second Option',title_list[2001:4000])
+            movie_3 = st.selectbox('Third Option',title_list[4001:8100])
+            fav_movies = [movie_1,movie_2,movie_3]
+            fav_movies = movie_1
+            usableData = pd.read_csv("resources/data/usableData.csv")
+            index = usableData[usableData['title'] == fav_movies].index[0]
+            movie_Id = usableData.loc[index,'movieId']
             if st.button("Recommend"):
                 try:
                     with st.spinner('Crunching the numbers...'):
@@ -97,19 +98,18 @@ def main():
 
 
         if sys == 'Collaborative Based Filtering':
+            st.write('### Enter Your User ID')
+            user_Id = st.number_input(label="", value=0.0)
             if st.button("Recommend"):
-                movies = pd.read_csv("resources/data/movies.csv")
+            
                 try:
-                    with st.spinner('Crunching the numbers...'):
-                        predictor = joblib.load(open(os.path.join("resources/models/SVD.pkl"), "rb"))
-                        usableData['predicted_ratingscore'] = usableData['movieId'].apply(lambda x: predictor.predict(146790, x).est)
-                        usableData = usableData.sort_values(by=['predicted_ratingscore'], ascending=False)
+                    with st.spinner('Crunching the numbers...'):         
+                        top_recommendations = collab_generate_top_N_recommendations(user = user_Id, N=10, k=20)
 
-
-                        top_recommendations = usableData.head(10)
                     st.title("We think you'll like:")
-                    for i,j in enumerate(top_recommendations):
-                        st.subheader(str(i+1)+'. '+j)
+                    top_recommendations
+                    #for i,j in enumerate(top_recommendations):
+                        #st.subheader(str(i+1)+'. '+j)
                 except:
                     st.error("Oops! Looks like this algorithm does't work.\
                               We'll need to fix it!")
